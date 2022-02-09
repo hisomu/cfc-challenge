@@ -1,0 +1,27 @@
+
+<div class="container" *ngIf="(provinces$ | async) as provinces">
+  <h1>Canadian Cities</h1>
+  <mat-tab-group class="tab-container" (selectedIndexChange)="tabChange($event)">
+    <ng-container *ngFor="let province of provinces; trackBy: trackBySvc.trackByIndex">
+      <mat-tab label="{{ province.short }}" >
+        <section>
+          <h2>{{ province.name }}</h2>
+          <div class="city-list" *ngIf="(cities$ | async) as cities">
+            <ng-container *ngIf="cities.length > 0; else noResults">
+              <div class="col bold" style="order: 0">Cities</div>
+              <div class="col right bold" style="order: 0">Population</div>
+              <ng-container *ngFor="let city of cities; trackBy: trackBySvc.trackByIndex">
+                <div class="col" *ngIf="city.municipality === province.capital"><span class="bold">{{city.municipality}}</span> (capital)</div>
+                <div class="col" *ngIf="city.municipality !== province.capital">{{city.municipality}}</div>
+                <div class="col right">{{city.population1996}}</div>
+              </ng-container>
+            </ng-container>
+            <ng-template #noResults>
+              No data found for this province
+            </ng-template>
+          </div>
+        </section>
+      </mat-tab>
+    </ng-container>
+  </mat-tab-group>
+</div>

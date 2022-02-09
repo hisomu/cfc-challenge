@@ -1,0 +1,66 @@
+.container {
+  position: relative;
+  max-width: 800px;
+  flex: 1 0 auto;
+  margin: 0 auto;
+  text-align: left;
+
+  .tab-container {
+    background-color: #fff;
+
+    h2 {
+      margin-top: 0;
+    }
+  }
+
+  section {
+    padding: 2rem;
+  }
+
+  .city-list {
+    display: flex;
+    flex-wrap: wrap;
+
+    .col {
+      width: 50%;
+      flex-grow: 1
+    }
+
+    .right {
+      text-align: right;
+    }
+  }
+
+  .bold {
+    font-weight: bold;
+  }
+
+  ::ng-deep  {
+    .mat-tab-group {
+        flex-direction: row;
+    }
+    .mat-tab-header {
+      border-bottom: none;
+    }
+    .mat-tab-header-pagination {
+        display: none !important;
+    }
+    .mat-tab-labels {
+      color: #fff;
+      background-color: #000;
+      flex-direction: column;
+    }
+    .mat-ink-bar {
+       display: none;
+    }
+    .mat-tab-body-wrapper {
+        flex: 1 1 auto;
+    }
+
+    .mat-tab-label-active {
+      background-color: #fff;
+      opacity: 1;
+      color: #0d0d0d;
+    }
+  }
+}
